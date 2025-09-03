@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function ConfirmationSummary({ formData }) {
   // Helper function to get project type label
   const getProjectTypeLabel = (value) => {
-    const projectTypes = [
+    const projectTypes = [ //more project types in the future!!!!!!!!!!!!!!!!!!!!!
       { value: "industrial", label: "Industrial" },
       { value: "commercial", label: "Commercial" },
       { value: "residential", label: "Residential" },
