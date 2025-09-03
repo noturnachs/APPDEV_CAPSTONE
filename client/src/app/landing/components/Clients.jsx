@@ -10,7 +10,7 @@ export default function Clients() {
   useEffect(() => {
     setIsClient(true)
   }, [])
-  const clients = [
+  const clients = [ //List of clients
     { name: "EcoTech Industries", logo: "/images/clients/1.png" },
     { name: "Green Solutions Corp", logo: "/images/clients/2.png" },
     { name: "Sustainable Energy Co", logo: "/images/clients/3.png" },
