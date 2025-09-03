@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// enums
+enum service_type {
+  permit_acquisition
+  monitoring
+}
+
+enum quotation_status {
+  pending
+  approved
+  rejected
+  sent
+}
+
+enum staff_role {
+  employee
+  manager
+  admin
+}
+
+// tables (models)
+model staff {
+  id           Int         @id @default(autoincrement())
+  email        String      @unique
+  password     String
+  first_name   String
+  last_name    String
+  role         staff_role  @default(employee)
+  is_active    Boolean     @default(true)
+  created_at   DateTime    @default(now())
+  updated_at   DateTime    @updatedAt
+
+  // Manager relationships
+  assigned_quotations quotation[] @relation("AssignedQuotations")
+}
+
+model client {
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
+  password     String
+  first_name   String
+  last_name    String
+  phone_number String
+  company_name String
+  created_at   DateTime       @default(now())
+  updated_at   DateTime       @updatedAt
+
+  quotations   quotation[]
+}
+
+model quotation {
+  id                     Int               @id @default(autoincrement())
+  first_name             String
+  last_name              String
+  email                  String
+  phone_number           String
+  company_name           String
+  service_type           service_type
+  description            String?
+  status                 quotation_status @default(pending)
+  created_at             DateTime          @default(now())
+  client_id              Int?              // Optional - only set when client accepts
+
+  // Manager workflow
+  assigned_manager_id    Int?
+  approved_at            DateTime?         // Used for both manager approval and client response
+  notes                  String?           // Manager notes/comments
+
+  // QuickBooks Sync
+  quickbooks_estimate_id String?           @unique
+  quickbooks_estimate_amount Float?        // Store the estimate amount/price
+  is_synced              Boolean           @default(false)
+  synced_at              DateTime?
+
+  client                 client?           @relation(fields: [client_id], references: [id])
+  assigned_manager       staff?            @relation("AssignedQuotations", fields: [assigned_manager_id], references: [id])
+  permit_requests        permit_request[]
+  project                project?          // One-to-one relationship with project
+}
+
+model permit_request {
+  id             Int              @id @default(autoincrement())
+  quotation_id   Int
+  permit_type_id Int?             // nullable for custom
+  custom_name    String?          // used if permit_type_id is null
+
+  quotation      quotation        @relation(fields: [quotation_id], references: [id], onDelete: Cascade)
+  permit_type    permit_type?     @relation(fields: [permit_type_id], references: [id])
+}
+
+model permit_type {
+  id                Int       @id @default(autoincrement())
+  name              String
+  agency_id         Int
+  agency            agency    @relation(fields: [agency_id], references: [id])
+  requests          permit_request[]
+  quickbooks_item_id String?  // For mapping to QuickBooks
+  price             Float?    // Store price for UI, sync from QB
+  description       String?   // (Optional) Store description for UI, sync from QB
+  time_estimate     String?   // Add this field for time estimates (e.g., "2-3 weeks", "1 month")
+}
+
+model agency {
+  id           Int               @id @default(autoincrement())
+  name         String
+  permit_types permit_type[]
+}
+
+model project {
+  id                 Int       @id @default(autoincrement())
+  quotation_id       Int       @unique
+  project_type       String    // Type of project (e.g., "Industrial", "Commercial", "Residential")
+  lot_area           Float?    // Lot area in square meters
+  annual_capacity    String?   // Annual capacity (e.g., "5000 tons/year", "10MW", etc.)
+  project_description String   // Detailed project description
+  created_at         DateTime  @default(now())
+  updated_at         DateTime  @updatedAt
+
+  quotation          quotation @relation(fields: [quotation_id], references: [id], onDelete: Cascade)
+}
+
+// Add this model to your existing schema
+model quickbooks_tokens {
+  id            Int      @id @default(autoincrement())
+  access_token  String   @db.Text
+  refresh_token String   @db.Text
+  realm_id      String
+  expires_in    Int
+  token_type    String
+  created_at    DateTime @default(now())
+
+  @@map("quickbooks_tokens")
+}
+
+

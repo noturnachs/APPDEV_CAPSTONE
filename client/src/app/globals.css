@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #106934;
+  --popover: #ffffff;
+  --popover-foreground: #106934;
+  --primary: #146c34;
+  --primary-foreground: #f9fafb;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #09090b;
+  --muted: #f3f4f6;
+  --muted-foreground: #030712;
+  --accent: #e5e5e5;
+  --accent-foreground: #09090b;
+  --destructive: #e7000b;
+  --destructive-foreground: #f8fafc;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #146c34;
+  --chart-1: #f54900;
+  --chart-2: #009689;
+  --chart-3: #104e64;
+  --chart-4: #ffb900;
+  --chart-5: #fe9a00;
+  --sidebar: #f9fafb;
+  --sidebar-foreground: #030712;
+  --sidebar-primary: #146c34;
+  --sidebar-primary-foreground: #f9fafb;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #101828;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #146c34;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0.625rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: #030712;
+  --foreground: #f9fafb;
+  --card: #101828;
+  --card-foreground: #f9fafb;
+  --popover: #101828;
+  --popover-foreground: #f9fafb;
+  --primary: #146c34;
+  --primary-foreground: #101828;
+  --secondary: #1e2939;
+  --secondary-foreground: #f9fafb;
+  --muted: #1e2939;
+  --muted-foreground: #99a1af;
+  --accent: #1e2939;
+  --accent-foreground: #f9fafb;
+  --destructive: #ff6467;
+  --destructive-foreground: #fafafa;
+  --border: #ffffff;
+  --input: #ffffff;
+  --ring: #146c34;
+  --chart-1: #1447e6;
+  --chart-2: #00bc7d;
+  --chart-3: #fe9a00;
+  --chart-4: #ad46ff;
+  --chart-5: #ff2056;
+  --sidebar: #101828;
+  --sidebar-foreground: #f9fafb;
+  --sidebar-primary: #146c34;
+  --sidebar-primary-foreground: #f9fafb;
+  --sidebar-accent: #1e2939;
+  --sidebar-accent-foreground: #f9fafb;
+  --sidebar-border: #ffffff;
+  --sidebar-ring: #146c34;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #106934;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0d5429;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Fix placeholder text contrast */
+  ::placeholder {
+    color: #6b7280 !important; /* Medium gray for better contrast */
+    opacity: 1;
+  }
+  
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-input-placeholder {
+    color: #6b7280 !important;
+    opacity: 1;
+  }
+  
+  /* Firefox */
+  ::-moz-placeholder {
+    color: #6b7280 !important;
+    opacity: 1;
+  }
+  
+  /* IE/Edge */
+  :-ms-input-placeholder {
+    color: #6b7280 !important;
+    opacity: 1;
+  }
+  
+  /* Focus state placeholder */
+  input:focus::placeholder,
+  textarea:focus::placeholder {
+    color: #9ca3af !important; /* Lighter gray when focused */
+    opacity: 0.7;
+  }
+}
