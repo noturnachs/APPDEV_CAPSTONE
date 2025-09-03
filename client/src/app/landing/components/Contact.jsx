@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 
 export default function Contact() {
+  // possible contact information changes in the future
   const contactInfo = [
     {
       icon: MapPin,
