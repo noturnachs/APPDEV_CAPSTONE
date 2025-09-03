@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Leaf, Mail, Phone, MapPin } from "lucide-react"
-
+//add a live time and data api for the footer
 export default function Footer() {
   return (
     <footer className="bg-white text-gray-800 border-t border-gray-200">
