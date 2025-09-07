@@ -10,7 +10,6 @@ import Contact from "./components/landing/Contact";
 
 // Authentication Pages
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 
 // Main Landing Page Component
@@ -33,7 +32,6 @@ function App() {
 
         {/* Authentication Routes */}
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Fallback to Landing Page */}

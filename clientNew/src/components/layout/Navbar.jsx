@@ -123,21 +123,11 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <>
-                <Link to="/login">
-                  <Button
-                    variant="outline"
-                    className="border-[#106934] text-[#106934] hover:bg-[#106934] hover:text-white"
-                  >
-                    Sign In
-                  </Button>
-                </Link>
-                <Link to="/register">
-                  <Button className="bg-[#106934] hover:bg-[#0d5429] text-white">
-                    Get Started
-                  </Button>
-                </Link>
-              </>
+              <Link to="/login">
+                <Button className="bg-[#106934] hover:bg-[#0d5429] text-white">
+                  Sign In
+                </Button>
+              </Link>
             )}
           </div>
 
@@ -243,16 +233,8 @@ const Navbar = () => {
             ) : (
               <div className="flex flex-col space-y-2 px-3 pt-3 border-t border-gray-200 mt-2">
                 <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button
-                    variant="outline"
-                    className="w-full border-[#106934] text-[#106934] hover:bg-[#106934] hover:text-white"
-                  >
-                    Sign In
-                  </Button>
-                </Link>
-                <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
                   <Button className="w-full bg-[#106934] hover:bg-[#0d5429] text-white">
-                    Get Started
+                    Sign In
                   </Button>
                 </Link>
               </div>
