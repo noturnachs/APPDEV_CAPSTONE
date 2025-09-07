@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Mail, ArrowLeft, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Mail, ArrowLeft, CheckCircle, ChevronLeft } from "lucide-react";
 import Button from "../components/ui/Button";
 
 const ForgotPassword = () => {
@@ -10,7 +11,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
@@ -22,19 +23,29 @@ const ForgotPassword = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <Link
+        to="/"
+        className="absolute top-4 left-4 flex items-center text-[#106934] hover:text-[#0d5429] font-medium"
+      >
+        <ChevronLeft className="h-5 w-5 mr-1" />
+        Back to Home
+      </Link>
+
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md">
         <div>
-          <img 
-            src="/images/logo.svg" 
-            alt="Alpha Environmental Systems" 
-            className="h-12 mx-auto" 
-          />
+          <Link to="/" className="block text-center mb-4">
+            <img
+              src="/images/logo.svg"
+              alt="Alpha Environmental Systems"
+              className="h-12 mx-auto"
+            />
+          </Link>
           <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
             {isSubmitted ? "Check Your Email" : "Reset Your Password"}
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            {isSubmitted 
-              ? "We've sent a password reset link to your email address." 
+            {isSubmitted
+              ? "We've sent a password reset link to your email address."
               : "Enter your email address and we'll send you a link to reset your password."}
           </p>
         </div>
@@ -45,10 +56,12 @@ const ForgotPassword = () => {
               <CheckCircle className="h-8 w-8 text-[#106934]" />
             </div>
             <p className="text-gray-600 mb-6">
-              If an account exists for <strong>{email}</strong>, you will receive an email with instructions on how to reset your password.
+              If an account exists for <strong>{email}</strong>, you will
+              receive an email with instructions on how to reset your password.
             </p>
             <p className="text-gray-600 mb-8">
-              Didn't receive an email? Check your spam folder or request another reset link.
+              Didn't receive an email? Check your spam folder or request another
+              reset link.
             </p>
             <div className="flex flex-col space-y-4">
               <Button
@@ -58,19 +71,22 @@ const ForgotPassword = () => {
               >
                 Try Another Email
               </Button>
-              <a 
-                href="/login" 
+              <Link
+                to="/login"
                 className="inline-flex justify-center items-center text-[#106934] hover:text-[#0d5429] font-medium"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Sign In
-              </a>
+              </Link>
             </div>
           </div>
         ) : (
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email Address
               </label>
               <div className="relative">
@@ -106,13 +122,13 @@ const ForgotPassword = () => {
                   "Send Reset Link"
                 )}
               </Button>
-              <a 
-                href="/login" 
+              <Link
+                to="/login"
                 className="inline-flex justify-center items-center text-[#106934] hover:text-[#0d5429] font-medium"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Sign In
-              </a>
+              </Link>
             </div>
           </form>
         )}

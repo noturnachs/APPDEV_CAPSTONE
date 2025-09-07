@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Eye,
   EyeOff,
@@ -7,6 +8,7 @@ import {
   Mail,
   User,
   Building,
+  ChevronLeft,
 } from "lucide-react";
 import Button from "../components/ui/Button";
 
@@ -38,13 +40,22 @@ const Login = () => {
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left side - Form */}
       <div className="w-full md:w-1/2 flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-12 bg-white">
+        <Link
+          to="/"
+          className="absolute top-4 left-4 flex items-center text-[#106934] hover:text-[#0d5429] font-medium"
+        >
+          <ChevronLeft className="h-5 w-5 mr-1" />
+          Back to Home
+        </Link>
         <div className="max-w-md w-full mx-auto">
           <div className="text-center mb-8">
-            <img
-              src="/images/logo.svg"
-              alt="Alpha Environmental Systems"
-              className="h-12 mx-auto mb-4"
-            />
+            <Link to="/" className="inline-block mb-4">
+              <img
+                src="/images/logo.svg"
+                alt="Alpha Environmental Systems"
+                className="h-12 mx-auto"
+              />
+            </Link>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">
               Welcome Back
             </h2>
