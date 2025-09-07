@@ -53,15 +53,15 @@ const Hero = () => {
             >
               <Button
                 size="lg"
-                className="group bg-primary hover:bg-primary-600 text-white"
+                className="group bg-[#106934] hover:bg-[#0d5429] text-white font-bold tracking-wide"
               >
                 Get Started Today
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary text-primary hover:bg-primary hover:text-white"
+                className="border-2 border-[#106934] text-[#106934] hover:bg-[#106934] hover:text-white font-bold tracking-wide"
               >
                 Learn More
               </Button>
