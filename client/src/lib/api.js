@@ -1,8 +1,25 @@
 import axios from 'axios';
 
+// Determine the API base URL based on the environment
+const getBaseUrl = () => {
+  // For production, use the deployed backend URL
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  
+  // For static export in production with no environment variable
+  if (process.env.NODE_ENV === 'production') {
+    // Change this to your actual backend URL when deployed
+    return 'https://your-backend-api.onrender.com/api';
+  }
+  
+  // For local development
+  return '/api';
+};
+
 // Create axios instance
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: getBaseUrl(),
   timeout: parseInt(process.env.NEXT_PUBLIC_API_TIMEOUT || '10000', 10),
   headers: {
     'Content-Type': 'application/json',
