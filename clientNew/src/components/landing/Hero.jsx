@@ -1,21 +1,21 @@
-import { motion } from 'framer-motion';
-import NumberTicker from '../../components/ui/NumberTicker';
-import Button from '../../components/ui/Button';
-import { ArrowRight, Shield, Award, Users, Leaf } from 'lucide-react';
+import { motion } from "framer-motion";
+import NumberTicker from "../../components/ui/NumberTicker";
+import Button from "../../components/ui/Button";
+import { ArrowRight, Shield, Award, Users, Leaf } from "lucide-react";
 
-const fadeIn = (direction = 'up', delay = 0) => {
+const fadeIn = (direction = "up", delay = 0) => {
   const variants = {
     hidden: {
       opacity: 0,
-      y: direction === 'up' ? 30 : 0,
-      x: direction === 'left' ? -30 : direction === 'right' ? 30 : 0,
+      y: direction === "up" ? 30 : 0,
+      x: direction === "left" ? -30 : direction === "right" ? 30 : 0,
     },
     visible: { opacity: 1, y: 0, x: 0 },
   };
   return {
     variants,
-    initial: 'hidden',
-    whileInView: 'visible',
+    initial: "hidden",
+    whileInView: "visible",
     transition: { duration: 0.8, delay, ease: [0.25, 0.25, 0.25, 1] },
     viewport: { once: true, amount: 0.4 },
   };
@@ -30,15 +30,15 @@ const Hero = () => {
           <div className="space-y-6">
             <motion.h1
               className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight"
-              {...fadeIn('up', 0)}
+              {...fadeIn("up", 0)}
             >
-              Your Partner in{' '}
+              Your Partner in{" "}
               <span className="text-primary">Environmental Compliance</span>
             </motion.h1>
 
             <motion.p
               className="text-xl text-gray-600 leading-relaxed"
-              {...fadeIn('up', 0.2)}
+              {...fadeIn("up", 0.2)}
             >
               Alpha Environmental Systems Corporation is a professional
               consulting firm that helps businesses meet environmental
@@ -49,18 +49,18 @@ const Hero = () => {
 
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
-              {...fadeIn('up', 0.4)}
+              {...fadeIn("up", 0.4)}
             >
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="group bg-primary hover:bg-primary-600 text-white"
               >
                 Get Started Today
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 className="border-primary text-primary hover:bg-primary hover:text-white"
               >
                 Learn More
@@ -70,12 +70,12 @@ const Hero = () => {
             {/* Stats */}
             <motion.div
               className="grid grid-cols-3 gap-8 pt-8"
-              {...fadeIn('up', 0.6)}
+              {...fadeIn("up", 0.6)}
             >
               {[
-                { icon: Shield, value: 15, label: 'Years Experience' },
-                { icon: Award, value: 500, label: 'Projects Completed' },
-                { icon: Users, value: 200, label: 'Happy Clients' },
+                { icon: Shield, value: 15, label: "Years Experience" },
+                { icon: Award, value: 500, label: "Projects Completed" },
+                { icon: Users, value: 200, label: "Happy Clients" },
               ].map(({ icon: Icon, value, label }, index) => (
                 <div key={index} className="text-center">
                   <Icon className="h-8 w-8 text-primary mx-auto mb-2" />
@@ -89,7 +89,7 @@ const Hero = () => {
           </div>
 
           {/* Right image */}
-          <motion.div className="relative" {...fadeIn('right', 0.2)}>
+          <motion.div className="relative" {...fadeIn("right", 0.2)}>
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src="/images/illustrations/quote1.svg"
@@ -99,7 +99,7 @@ const Hero = () => {
             </div>
             <motion.div
               className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg"
-              {...fadeIn('left', 0.4)}
+              {...fadeIn("left", 0.4)}
             >
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
