@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  output: 'export', // Enable static site generation
-  // Comment out rewrites when using static export
-  // Note: API routes won't work in static mode
-  // We'll need to update API calls to point to your production backend URL later
-  /* 
   async rewrites() {
     return [
       {
@@ -14,7 +9,6 @@ const nextConfig = {
       },
     ];
   },
-  */
-}
+};
 
 export default nextConfig;
