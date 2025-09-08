@@ -1,7 +1,0 @@
----
-alwaysApply: true
----
-
-When suggesting a code edit, just give the edited part dont give the full file code to save time
-We are only editing in the folder named: clientNew, this project is redesigning the frontend of the folder named client, that is using nextjs but we are redesigning it using reactjs vite + tailwindcss
-When designing a component or frontend code, make sure the design isnt AI-like, go for a more professional and formal design
